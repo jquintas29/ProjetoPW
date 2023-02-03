@@ -1,0 +1,42 @@
+<%- include('./layouts/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="../styles/formularios.css">
+<title>JobList</title>
+</head>
+
+<%- include('./layouts/cabecalho.ejs') %>
+
+    <form class="myForm" name="myForm" action="javascript:processar();">
+        <h2>Adicionar Vaga</h2>
+
+        <label for="nomeEmpresa">Nome da empresa</label>
+        <input id="myFormElem" class="myFormElem" type="text" name="name" placeholder="Nome da empresa" />
+
+        <label for="descriçãoOferta">Descrição da oferta</label>
+        <textarea name="descricao" id="myFormElem" class="myFormElem" cols="30" rows="10"
+            placeholder="Introduza a descrição da sua oferta"></textarea>
+
+        <label for="areaOferta">Área</label>
+        <select id="myFormElem" class="myFormElem" name="area">
+            <option value=""></option>
+            <option value="programação">programação</option>
+            <option value="Base de Dados">Base de Dados</option>
+            <option value="Analise de Dados">Análise de Dados</option>
+            <option value="Administração de sistemas">Administração de sistemas</option>
+            <option value="Web Design">Web Design</option>
+            <option value="Consultor informático">Consultor informático</option>
+        </select>
+
+        <label for="duracaoOferta">Duração da oferta</label>
+        <input id="myFormElem" class="myFormElem" type="text" name="duracao" placeholder="Duração" />
+
+        <label for="valorOferta">Valor total da oferta</label>
+        <input id="myFormElem" class="myFormElem" type="text" name="valor" placeholder="Valor" />
+
+        <label for="validadeOferta">Data de validade da oferta</label>
+        <input id="myFormElem" class="myFormElem" type="date" name="validade" />
+
+        <input id="btnSubmeter" class="Btn" name="btnSubmeter" type="submit" value="submeter" />
+        <input id="btnLimpar" class="Btn" name="btnLimpar" type="reset" value="reset" />
+    </form>
+
+    <%- include('./layouts/footer2.ejs') %>

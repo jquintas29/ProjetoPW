@@ -1,0 +1,32 @@
+<%- include('./layouts/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="../styles/perfil.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../scripts/perfil.js"></script>
+    <title>JobList</title>
+    </head>
+
+    <%- include('./layouts/cabecalho.ejs') %>
+
+        <main class="feedProfile">
+            <section class="perfil">
+                <div id="profileBackground"></div>
+                <div id="user">
+                    <div>
+                        <img id="profileImg" src="../images/perfil.jpg" alt="" style="height:100px; width:115px">
+                    </div>
+                    <!--trocar o nome para variavel-->
+                    <p id="nomeUsr">
+                        <%= name %>
+                    </p>
+                </div>
+
+                <div id="gestao">
+                    <h3>Portfólio</h3>
+                    <button class="gerirBtn" onclick="alterarPerfil()">Gerir</button>
+                </div>
+                <hr>
+
+            </section>
+        </main>
+
+        <%- include('./layouts/footer2.ejs') %>

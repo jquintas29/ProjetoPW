@@ -1,0 +1,129 @@
+/*Color pallet
+HEX:
+header: #CD5334
+feed: D9D9D9
+Titulo(Raisin black): #2E282A
+botao de "candidatar-se": A52422
+*/
+
+/*GLOBAL*/
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding-bottom: 2.5rem;
+}
+
+#footer1 {
+    position: absolute;
+    width: 100%;
+    bottom: auto;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #D9D9D9;
+}
+
+#footer2 {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #D9D9D9;
+}
+
+hr {
+    margin: 10px 0px;
+}
+
+#estado {
+    display: none;
+    font-size: 17px;
+    color: black;
+    border: rgb(128, 128, 128) solid;
+    border-radius: 20px;
+    background-color: rgba(126, 126, 126, 0.616);
+    padding: 5px 10px 5px;
+    margin: auto;
+    cursor: pointer;
+}
+
+#estadoLogin {
+    display: block;
+    font-size: 17px;
+    color: black;
+    border: #C0392B solid;
+    background-color: #EC7063;
+    border-radius: 20px;
+    padding: 5px 10px 5px;
+    margin: auto;
+    cursor: pointer;
+}
+
+/***********************************************************************************************/
+/*GLOBAL - HEADER*/
+header {
+    margin: 0px auto 0px;
+    padding: 10px 0px 6px 0px;
+    background-color: #CD5334;
+    position: fixed;
+    width: 100%;
+}
+
+#titulo {
+    float: left;
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 28%;
+    color: #2E282A;
+    cursor: pointer;
+    background-color: #CD5334;
+    border: none;
+}
+
+.cabeçalho {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+}
+
+.cabeçalho li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+.cabeçalho li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+input#menuLinks {
+    font-size: 15px;
+    color: white;
+    border: none;
+    background-color: #CD5334;
+    cursor: pointer;
+}
+
+/***********************************************************************************************/
+/*HOME/index*/
+
+/***********************************************************************************************/
+/*SOBRE NOS*/
+
+/***********************************************************************************************/
+/*PERFIL*/
+
+/***********************************************************************************************/
+/*AREA DE PORTFOLIOS*/
+
+/***********************************************************************************************/
+/*VAGAS*/
+
+/***********************************************************************************************/
+/*FORMULÁRIOS*/

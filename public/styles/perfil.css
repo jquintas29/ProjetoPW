@@ -1,0 +1,70 @@
+/*PERFIL*/
+.feedProfile {
+    padding-top: 40px;
+}
+
+.perfil {
+    width: 85%;
+    margin: auto;
+}
+
+#profileBackground {
+    max-width: 100%;
+    height: 250px;
+    margin: auto;
+    border-radius: 0 0 30px 30px;
+    background-image: url(../images/wallpaper3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+main #user div {
+    height: 100px;
+    width: 100px;
+    margin: 10px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#nomeUsr {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+/***********************************************************************************************/
+/*AREA DE PORTFOLIOS*/
+#gestao {
+    display: inline-flex;
+}
+
+#gestao h3 {
+    margin-top: 5px;
+}
+
+.gerirBtn {
+    font-size: 17px;
+    font-weight: bold;
+    width: 55px;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#portfolio {
+    width: 65%;
+    margin: auto;
+}
+
+#perfilForm {
+    width: 65%;
+}
+/*
+#perfilForm {
+    
+}*/

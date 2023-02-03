@@ -1,0 +1,49 @@
+/*FORMULÁRIOS*/
+.myForm {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: auto;
+}
+
+header+.myForm {
+    padding-top: 70px;
+}
+
+.myForm h2,
+.link {
+    margin: 0px auto 10px;
+}
+
+.myForm label {
+    font-size: 20px;
+    margin: 10px 0px 5px;
+}
+
+.myForm input,
+select {
+    margin-bottom: 10px;
+}
+
+.myForm .myFormElem {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #d9d9d9;
+}
+
+.Btn {
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    background-color: #A52422;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+p{
+    margin: auto;
+    padding: 5px;
+}

@@ -1,0 +1,38 @@
+<%- include('./layouts/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="../styles/formularios.css">
+    <title>JobList</title>
+    </head>
+
+    <%- include('./layouts/cabecalho.ejs') %>
+
+        <form class="myForm" id="loginform" action="/login" method="post">
+            <h2>Login</h2>
+            <label for="emailLogin">Email</label>
+            <input type="email" name="emailLogin" id="emailLogin" class="myFormElem" placeholder="Email" required>
+
+            <label for="passwordLogin">Password</label>
+            <input type="password" name="passwordLogin" id="passwordLogin" class="myFormElem" placeholder="Password"
+                required>
+
+            <div>
+                <label for="role">Tipo de utilizador: </label>
+                <select id="role" class="myFormElem" name="role" required>
+                    <option value="" selected hidden>Profissional/Empresa</option>
+                    <option value="user">Profissional</option>
+                    <option value="companie">Empresa</option>
+                    <option value="admin">Administrator</option>
+                </select>
+            </div>
+
+            <% if (messages.error) { %>
+                <p id="estadoLogin">
+                    <%= messages.error %>
+                </p>
+                <% } %>
+
+                    <input id="btnLogIn" name="btnLogIn" class="Btn" type="submit" value="Login" />
+                    <p>Ainda não se registou? Clique em baixo para fazer o seu registo</p>
+                    <a id="registarLink" class="link" href="/registar">Registar</a>
+        </form>
+
+        <%- include('./layouts/footer2.ejs') %>
