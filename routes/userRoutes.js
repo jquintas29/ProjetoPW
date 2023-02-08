@@ -13,6 +13,9 @@ module.exports = app => {
 
     router.get('/sobrenos', (req, res) => res.render('views/Sobre_nos.ejs'));
 
+    //permite buscar as informações guardadas na sessão
+    router.get('/api/session', (req, res) => res.send({ user: req.user }));
+
     //se registado com sucesso é redirecionado para GET /registar
     router.post('/registar', userModel.registar);
     router.get('/registar', (req, res) => res.render("views/registar.ejs"));

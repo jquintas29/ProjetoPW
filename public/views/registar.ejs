@@ -7,16 +7,13 @@
 
     <%- include('./layouts/cabecalho.ejs') %>
 
-        <!--<form class="myForm" id="registarForm" action="javascript:registarUser()" method="post">-->
         <div class="myForm" id="registarForm">
             <h2>Registar</h2>
             <label for="emailRegistar">Email</label>
-            <input type="email" name="emailRegistar" id="emailRegistar" class="myFormElem" placeholder="Email"
-                required>
+            <input type="email" name="emailRegistar" id="emailRegistar" class="myFormElem" placeholder="Email" required>
 
             <label for="nameRegistar">Nome</label>
-            <input type="text" name="nameRegistar" id="nameRegistar" class="myFormElem" placeholder="Nome"
-                required>
+            <input type="text" name="nameRegistar" id="nameRegistar" class="myFormElem" placeholder="Nome" required>
 
             <label for="passwordRegistar">Password</label>
             <input type="password" name="passwordRegistar" id="passwordRegistar" class="myFormElem"
@@ -27,17 +24,15 @@
                 <select id="role" class="myFormElem" name="role" required>
                     <option value="" selected hidden>Profissional/Empresa</option>
                     <option value="user">Profissional</option>
-                    <option value="companie">Empresa</option>
+                    <option value="company">Empresa</option>
                     <option value="admin">Administrador</option>
                 </select>
             </div>
             <p id="estado"></p>
 
-            <!--  <input id="btnRegistar" class="Btn" name="btnRegistar" type="submit" value="Registar" /> -->
             <button id="btnRegistar" class="Btn" onclick="registarUser()">Registar</button>
             <p>Já se registou? Clique em baixo se já tem uma conta registada</p>
             <a id="registarLink" class="link" href="/login">Login</a>
         </div>
-        <!-- </form>-->
 
         <%- include('./layouts/footer2.ejs') %>

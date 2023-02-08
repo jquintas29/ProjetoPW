@@ -25,14 +25,14 @@ function registarUser() {
             }
             result = await response.json();
             estado.style.display = "block"
-            estado.style.border= "#66BB6A solid"
+            estado.style.border = "#66BB6A solid"
             estado.style.backgroundColor = "#81C784"
             estado.innerHTML = result.message
         })
         .catch(async function (er) {
             console.log("entrei no catch")
             estado.style.display = "block"
-            estado.style.border= "#C0392B solid"
+            estado.style.border = "#C0392B solid"
             estado.style.backgroundColor = "#EC7063"
             estado.innerHTML = er;
         })
