@@ -8,7 +8,7 @@ const initializePassport = require('../config/passport-config');
  * inicializa o passaporte passando como parametro o passaport 
  * e as função para procurar o utilizador na base de dados.
  */
-initializePassport(passport, dbModel.getUser, dbModel.getCompanie, dbModel.getAdmin);
+initializePassport(passport, dbModel.getUser, dbModel.getCompany, dbModel.getAdmin);
 
 exports.registar = async function (req, res) {
     console.log("a registar utilizador");
@@ -25,7 +25,7 @@ exports.registar = async function (req, res) {
         .then(function (data) {
             console.log("registo feito");
             //res.json('Utilizador registado com sucesso')
-            res.status(201).send({message: "Utilizador registado com sucesso"});
+            res.status(201).send({ message: "Registo feito com sucesso" });
         })
         .catch(function (response) {
             //se nao for possivel criar o novo utilizador

@@ -1,7 +1,7 @@
 const localStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 
-function initializePassport(passport, getUserByEmail, getCompanieByEmail, getAdminByEmail) {
+function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdminByEmail) {
     console.log("initializePassport- initialized");
 
     const authenticateUser = async function (req, emailLogin, passwordLogin, done) {
@@ -29,7 +29,7 @@ function initializePassport(passport, getUserByEmail, getCompanieByEmail, getAdm
         } else if (role == "user") {
             return getUserByEmail;
         } else {
-            return getCompanieByEmail;
+            return getCompanyByEmail;
         }
     }
 
