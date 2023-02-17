@@ -13,15 +13,19 @@ initializePassport(passport, dbModel.getUser, dbModel.getCompany, dbModel.getAdm
 exports.registar = async function (req, res) {
     console.log("a registar utilizador");
     console.log(req.body);
-    const email = req.body.email;
-    const nome = req.body.name;
-    const role = req.body.role;
 
     //encriptação da password
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    dbModel.registar(email, nome, hashedPassword, role)
+    const user = {
+        email: req.body.email,
+        name: req.body.name,
+        password: hashedPassword,
+        permissions: req.body.role
+    }
+
+    dbModel.registar(user)
         .then(function (data) {
             console.log("registo feito");
             //res.json('Utilizador registado com sucesso')
@@ -34,6 +38,51 @@ exports.registar = async function (req, res) {
             res.status(400).send(response);
         })
 };
+
+exports.alterUserInfo = async function (req, res) {
+    console.log("vim alterar a info do user")
+    console.log("email do user: " + JSON.stringify(req.body))
+    const usr = {
+        emailSearch: req.user.email || null,
+        newName: req.body.name || null,
+        newData_nascimento: req.body.data_nascimento || null,
+        newGenero: req.body.genero || null,
+        newDescricao: req.body.descricao || null,
+        newLocalidade: req.body.localidade || null,
+        newVisto_por_empresas: req.body.visto_por_empresa || null
+    }
+
+    dbModel.alterUserInfo(usr)
+        .then(function (data) {
+            console.log("alteração no user feito")
+            res.status(201).send(data)
+        })
+        .catch(function (response) {
+            console.log("algo correu mal na alteração do user")
+            res.status(400).send(response);
+        })
+}
+
+exports.alterCompanyInfo = async function (req, res) {
+    console.log("vim alterar a info da empresa")
+    const company = {
+        emailSearch: req.user.email || null,
+        newName: req.body.name || null,
+        newDescricao: req.body.descricao || null,
+        newURLEmpresa: req.body.URLEmpresa || null,
+        newURLLogo: req.body.URLLogo || null
+    }
+
+    dbModel.alterCompanyInfo(company)
+        .then(function (data) {
+            console.log("alteração na empresa feito")
+            res.status(201).send({ message: "Alteração do perfil da empresa realizado com sucesso" })
+        })
+        .catch(function (response) {
+            console.log("algo correu mal na alteração da empresa")
+            res.status(400).send(response);
+        })
+}
 
 exports.logout = function (req, res, next) {
     if (req.isUnauthenticated()) {

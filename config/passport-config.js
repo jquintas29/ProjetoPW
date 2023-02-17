@@ -54,7 +54,11 @@ function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdmi
         let userInfo = {
             email: user.email,
             name: user.name,
-            role: user.permissions
+            role: user.permissions,
+            genero: user.genero,
+            localidade: user.localidade,
+            descricao: user.descricao,
+            dataNascimento: user.data_nascimento
         }
         done(null, userInfo);
     })
@@ -68,12 +72,21 @@ function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdmi
         //procura na base de dados pelo usuário
         const user = await getUser(session.email)
         //atribui apenas as informações necessárias
+        let birth
+        if (user.data_nascimento != null) {
+            birth = new Date(user.data_nascimento)
+            birth = `${birth.getDate()}/${birth.getMonth() + 1}/${birth.getFullYear()}`
+        }
         let userInfo = {
             email: user.email,
             name: user.name,
-            role: user.permissions
+            role: user.permissions,
+            genero: user.genero,
+            localidade: user.localidade,
+            descricao: user.descricao,
+            dataNascimento: birth || null
         }
-        return done(null, userInfo)
+        return done(null, userInfo) 
     })
 }
 
