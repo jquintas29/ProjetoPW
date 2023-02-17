@@ -11,6 +11,9 @@ module.exports = app => {
     router.get('/formvaga', (req, res) => res.render('views/formVaga.ejs'));
     router.post('/formvaga'); //fazer a validação do formulário
 
+    router.put('/alterUser', userModel.alterUserInfo);
+    router.put('/alterCompany', userModel.alterCompanyInfo);
+
     router.get('/sobrenos', (req, res) => res.render('views/Sobre_nos.ejs'));
 
     //permite buscar as informações guardadas na sessão
@@ -32,8 +35,13 @@ module.exports = app => {
     router.get('/logout', userModel.logout);
 
     //verifica se o utilizador ja tem a sessao iniciada e renderiza o perfil de utilizador 
-    router.get('/perfil', userModel.checkAuthenticated, (req, res) => res.render('views/perfil.ejs', { name: req.user.name }));
-    router.get('/perfil/change')
+    router.get('/perfil', userModel.checkAuthenticated, (req, res) => res.render('views/perfil.ejs', {
+        name: req.user.name,
+        genero: req.user.genero,
+        localidade: req.user.localidade,
+        descricao: req.user.descricao,
+        nascimento: req.user.dataNascimento
+    }));
 
     app.use('/', router);
 };

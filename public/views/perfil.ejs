@@ -1,6 +1,6 @@
 <%- include('./layouts/header.ejs') %>
-<link rel="stylesheet" type="text/css" href="../styles/perfil.css">
-<link rel="stylesheet" type="text/css" href="../styles/formularios.css">
+    <link rel="stylesheet" type="text/css" href="../styles/perfil.css">
+    <link rel="stylesheet" type="text/css" href="../styles/formularios.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../scripts/perfil.js"></script>
     <title>JobList</title>
@@ -27,7 +27,27 @@
                 </div>
                 <hr>
                 <div id="formDescrição"></div>
-                <div id="descrição"></div>
+                <div id="descrição">
+                    <% if(descricao !=null){ %>
+                        <h3>Descrição</h3>
+                        <%=descricao %>
+                            <% } %>
+
+                                <% if(nascimento !=null){ %>
+                                    <h3>Data de nascimento</h3>
+                                    <%=nascimento %>
+                                        <% } %>
+
+                                            <% if(localidade !=null){ %>
+                                                <h3>Localidade</h3>
+                                                <%=localidade %>
+                                                    <% } %>
+
+                                                        <% if(genero !=null){ %>
+                                                            <h3>Gênero</h3>
+                                                            <%=genero %>
+                                                                <% } %>
+                </div>
 
                 <br><br><br>
             </section>

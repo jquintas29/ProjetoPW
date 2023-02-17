@@ -1,17 +1,10 @@
 const { response } = require('express');
 const dbConnection = require('../config/connectionDatabase').dbConnection;
 
-exports.registar = async function (email, nome, password, role) {
+exports.registar = async function (user) {
     console.log("ja estou a registar");
-    const user = {
-        email: email,
-        name: nome,
-        password: password,
-        permissions: role
-    }
-
     return new Promise(function (resolve, reject) {
-        switch (role) {
+        switch (user.permissions) {
             case "user":
                 dbConnection.query("INSERT INTO users SET ?", user,
                     function (err, result) {
@@ -28,7 +21,7 @@ exports.registar = async function (email, nome, password, role) {
                 dbConnection.query("INSERT INTO empresas SET ?", user,
                     function (err, result) {
                         if (err) {
-                            console.log("Deu erro no registo na tabela empresa");
+                            console.log("Deu erro no registo na tabela empresa" + err);
                             reject({ msg: "Ja existe uma empresa com este email" });
                         } else {
                             resolve(result);
@@ -53,6 +46,47 @@ exports.registar = async function (email, nome, password, role) {
                 //caso não entre em nenhum dos cases
                 console.log("ERRO");
         }
+    })
+}
+
+exports.alterUserInfo = function (user) {
+    console.log("birth: " + user.data_nascimento);
+    return new Promise(function (resolve, reject) {
+        dbConnection.query(`call alterUserInfo(?, ?, ?, ?, ?, ?, ?)`, [
+            user.emailSearch,
+            user.newName,
+            user.newBirth,
+            user.newGenero,
+            user.newDescricao,
+            user.newLocalidade,
+            user.newVistoPorEmpresa
+        ], function (err, result) {
+            if (err) {
+                console.log("correu mal a alterar no user: " + err)
+                reject({ msg: "Erro na alteração das informações do utilizador." })
+            } else {
+                resolve(result)
+            }
+        })
+    })
+}
+
+exports.alterCompanyInfo = function (company) {
+    return new Promise(function (resolve, reject) {
+        dbConnection.query('call alterCompanyInfo(?, ?, ?, ?, ?)', [
+            company.emailSearch,
+            company.newName,
+            company.newDescricao,
+            company.newURLEmpresa,
+            company.newURLLogo
+        ], function (err, result) {
+            if (err) {
+                console.log("correu mal a alterar na empresa: " + err)
+                reject({ msg: "Erro na alteração das informações da empresa." })
+            } else {
+                resolve(result)
+            }
+        })
     })
 }
 
