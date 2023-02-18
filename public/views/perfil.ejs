@@ -27,26 +27,40 @@
                 </div>
                 <hr>
                 <div id="formDescrição"></div>
-                <div id="descrição">
+                <div id="descrição" class="descricaoPerfil">
                     <% if(descricao !=null){ %>
-                        <h3>Descrição</h3>
+                        <h2>Descrição</h2>
                         <%=descricao %>
                             <% } %>
 
                                 <% if(nascimento !=null){ %>
-                                    <h3>Data de nascimento</h3>
+                                    <h2>Data de nascimento</h2>
                                     <%=nascimento %>
                                         <% } %>
 
                                             <% if(localidade !=null){ %>
-                                                <h3>Localidade</h3>
+                                                <h2>Localidade</h2>
                                                 <%=localidade %>
                                                     <% } %>
 
                                                         <% if(genero !=null){ %>
-                                                            <h3>Gênero</h3>
+                                                            <h2>Gênero</h2>
                                                             <%=genero %>
                                                                 <% } %>
+
+                                                                    <% if(URLEmpresa !=null){ %>
+                                                                        <h2>Link da pagina da empresa da Empresa</h2>
+                                                                        <a href="<%= URLEmpresa %>">
+                                                                            <%= name %>
+                                                                        </a>
+                                                                        <% } %>
+
+                                                                            <% if(URLLogo !=null){ %>
+                                                                                <h2>Link do logotipo da empresa</h2>
+                                                                                <a href="<%= URLLogo %>">
+                                                                                    <%= name %> Logo
+                                                                                </a>
+                                                                                <% } %>
                 </div>
 
                 <br><br><br>

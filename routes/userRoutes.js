@@ -34,14 +34,19 @@ module.exports = app => {
 
     router.get('/logout', userModel.logout);
 
-    //verifica se o utilizador ja tem a sessao iniciada e renderiza o perfil de utilizador 
-    router.get('/perfil', userModel.checkAuthenticated, (req, res) => res.render('views/perfil.ejs', {
+    //verifica se o utilizador ja tem a sessao iniciada e renderiza o perfil de utilizador, ou empresa, ou admin
+    router.get('/perfil', userModel.checkAuthenticated, (req, res) =>{ 
+        console.log("vim mostrar o perfil")
+        console.log(req.user)
+        res.render('views/perfil.ejs', {
         name: req.user.name,
         genero: req.user.genero,
         localidade: req.user.localidade,
         descricao: req.user.descricao,
-        nascimento: req.user.dataNascimento
-    }));
+        nascimento: req.user.dataNascimento,
+        URLEmpresa: req.user.URLEmpresa,
+        URLLogo: req.user.URLLogo
+    })})
 
     app.use('/', router);
 };

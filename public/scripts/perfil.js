@@ -2,6 +2,8 @@ const baseUrl = "http://127.0.0.01:8888";
 
 function formPerfil() {
     console.log("form do perfil a caminho")
+    const descricao = document.getElementById('descrição');
+
     const url = baseUrl + "/api/session";
 
     fetch(url)
@@ -9,17 +11,33 @@ function formPerfil() {
             res = await response.json()
             console.log(res.user)
             if (res.user.role == "user") {
+                descricao.style.display = "none";
                 perfilUser();
             } else if (res.user.role == "company") {
+                descricao.style.display = "none";
                 perfilCompany();
             }
         })
 }
 
 function cancelarPerfilForm() {
-    const formDescrição = document.getElementById("formDescrição");
+    /*const formDescrição = document.getElementById("formDescrição");
+    const descricao = document.getElementById('descrição');
+
+    const url = baseUrl + "/perfil"
 
     formDescrição.innerHTML = ""
+    descricao.style.display = "block";
+    fetch(url, {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "GET"
+    })
+        .then(function (req, res) {
+            console.log("cancelei e dei render do perfil")
+        })*/
+    location.reload();
 }
 
 function validarFormUser() {
@@ -48,6 +66,7 @@ function validarFormUser() {
                 throw new Error(erro.msg)
             }
             result = await response.json();
+            location.reload();
 
             console.log("result: " + JSON.stringify(result))
         })
@@ -77,6 +96,7 @@ function validarFormEmpresa() {
             throw new Error(erro.msg)
         }
         result = await response.json();
+        location.reload();
     })
         .catch(async function (er) {
             console.log(er)
