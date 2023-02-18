@@ -7,9 +7,9 @@ function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdmi
     const authenticateUser = async function (req, emailLogin, passwordLogin, done) {
         console.log("\nA autenticar o user")
         //testa o papel que o usuario introduziu e vai buscar a função para esse papel
-        const getUser = checkRole(req.body.role);
+        const getUserFunction = checkRole(req.body.role);
         //procura na base de dados o utilizador pelo email
-        getUser(emailLogin)
+        getUserFunction(emailLogin)
             .then(async function (user) {
                 if (await bcrypt.compare(passwordLogin, user.password)) {
                     return done(null, user);
@@ -68,25 +68,28 @@ function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdmi
     passport.deserializeUser(async function (session, done) {
         console.log("\ndeserializeUser- DESCERIALIZEI");
         //vai buscar a função para procurar na base de dados conforme o papel do usuário
-        const getUser = checkRole(session.role)
+        const getUserFunction = checkRole(session.role)
         //procura na base de dados pelo usuário
-        const user = await getUser(session.email)
-        //atribui apenas as informações necessárias
+        const user = await getUserFunction(session.email)
+        //atribui apenas as informações necessárias 
+        console.log(user)       
         let birth
         if (user.data_nascimento != null) {
             birth = new Date(user.data_nascimento)
             birth = `${birth.getDate()}/${birth.getMonth() + 1}/${birth.getFullYear()}`
         }
-        let userInfo = {
+        userInfo = {
             email: user.email,
             name: user.name,
             role: user.permissions,
             genero: user.genero,
             localidade: user.localidade,
             descricao: user.descricao,
-            dataNascimento: birth || null
+            dataNascimento: birth || null,
+            URLEmpresa: user.URL_empresa,
+            URLLogo: user.URL_logo
         }
-        return done(null, userInfo) 
+        return done(null, userInfo)
     })
 }
 
