@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/formularios.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../scripts/perfil.js"></script>
-    <title>JobList</title>
+    <title>JobList | Perfil</title>
     </head>
 
     <%- include('./layouts/cabecalho.ejs') %>
@@ -12,19 +12,33 @@
             <section class="perfil">
                 <div id="profileBackground"></div>
                 <div id="user">
-                    <div>
+                    <div id="divProfileImg">
                         <img id="profileImg" src="../images/perfil.jpg" alt="" style="height:100px; width:115px">
                     </div>
-                    <!--trocar o nome para variavel-->
                     <p id="nomeUsr">
                         <%= name %>
                     </p>
+                    <div id="gestao">
+                        <button id="btnReload" class="btnPerfil" onclick="reloadPerfilPage()">X</button>
+                        <% if(role==="user" || role==="company" ){ %>
+                            <button id="btnGerirDescricao" class="btnPerfil"
+                                onclick="formDescrição()">Descrição</button>
+                            <% if(role==="user" ){ %>
+                                <button id="btnGerirTrabalhos" class="btnPerfil" onclick="getWorkExperience()">Trabalhos</button>
+                                <button id="btnGerirFormações" class="btnPerfil" onclick="getAcademicFormation()">Formações</button>
+                                <button id="btnGerirAmigos" class="btnPerfil" onclick="getUserFriends()">Amigos</button>
+                                <button id="btnGerirPedidosAmg" class="btnPerfil" onclick="getFriendsRequests()">Pedidos
+                                    de amizade</button>
+                                <% } %>
+                                    <% } %>
+                                        <% if(role==="admin" ){ %>
+                                            <button id="btnGerirProfissionais" class="btnPerfil" onclick="showUsersToAdmin()">Profissionais</button>
+                                            <button id="btnGerirEmpresas" class="btnPerfil" onclick="showCompaniesToAdmin()">Empresas</button>
+                                            <button id="btnGerirPedidos" class="btnPerfil" onclick="showCompaniesToAdminWReq() ">Pedidos</button>
+                                            <% } %>
+                    </div>
                 </div>
 
-                <div id="gestao">
-                    <h3>Portfólio</h3>
-                    <button class="gerirBtn" onclick="formPerfil()">Gerir</button>
-                </div>
                 <hr>
                 <div id="formDescrição"></div>
                 <div id="descrição" class="descricaoPerfil">
@@ -63,6 +77,12 @@
                                                                                 <% } %>
                 </div>
 
+                <h2></h2>
+                <p></p>
+
+                <div id="listaAmigos">
+
+                </div>
                 <br><br><br>
             </section>
         </main>

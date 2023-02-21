@@ -19,6 +19,7 @@ function initializePassport(passport, getUserByEmail, getCompanyByEmail, getAdmi
                 }
             })
             .catch(function (err) {
+                console.log("deu erro a autenticar")
                 return done(null, false, err)
             });
     }

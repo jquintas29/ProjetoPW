@@ -1,0 +1,20 @@
+<%- include('./layouts/header.ejs') %>
+    <script src="../scripts/procurar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/procurar.css">
+    <title>JobList | Procurar</title>
+    </head>
+
+    <%- include('./layouts/cabecalho.ejs') %>
+
+        <main class="feed">
+            <div id="searchButtons">
+                <button id="btnMostrarProfissionais" class="btnProcurar" onclick="getAllUsers()">Profissionais</button>
+                <button id="btnMostrarEmpresas" class="btnProcurar" onclick="getAllCompanies()">Empresas</button>
+            </div>
+            <hr>
+            <div id="UsersCompaniesList">
+                
+            </div>
+        </main>
+
+        <%- include('./layouts/footer2.ejs') %>

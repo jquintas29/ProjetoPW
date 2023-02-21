@@ -2,7 +2,7 @@ var init = function () {
     let vagasArr = [];
     let feedArr = [];
     var ordenar = new Map();
-    const urlBase = "http://localhost:8888/api";
+    const urlBase = "http://localhost:8888";
 
     var btnLimparFiltro = document.getElementById('btnLimparFiltro');
     var btnFiltrar = document.getElementById('btnFiltrar');
@@ -70,7 +70,6 @@ var init = function () {
             listaVagas.appendChild(divVaga);
         }
     }
-
 
     btnFiltrar.addEventListener("click", function () {
         let filterselectedIndex = filterElements.selectedIndex;

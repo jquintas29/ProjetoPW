@@ -8,10 +8,11 @@
     margin: auto;
 }
 
+
 #profileBackground {
     max-width: 100%;
     height: 250px;
-    margin: auto;
+    /*margin: auto;*/
     border-radius: 0 0 30px 30px;
     background-image: url(../images/wallpaper3.jpg);
     background-repeat: no-repeat;
@@ -19,56 +20,123 @@
     background-size: cover;
 }
 
-main #user div {
+#divProfileImg {
     height: 100px;
     width: 100px;
-    margin: 10px auto;
+    margin: 10px auto 5px;
     border-radius: 50%;
     overflow: hidden;
 }
 
 #nomeUsr {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0px;
     font-weight: bold;
     font-size: 150%;
 }
 
 /***********************************************************************************************/
-/*AREA DE PORTFOLIOS*/
+/*ÁREA DE GESTÃO DO PERFIL*/
 #gestao {
-    display: inline-flex;
-}
-
-#gestao h3 {
+    width: 55%;
+    margin: auto;
     margin-top: 5px;
+    /*display: inline-flex;*/
 }
 
-.gerirBtn {
+.btnPerfil {
     font-size: 17px;
     font-weight: bold;
-    width: 55px;
+    width: fit-content;
     height: 25px;
     border: none;
     border-radius: 20px;
     background-color: #d9d9d9;
-    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px 10px;
     cursor: pointer;
 }
 
-.descricaoPerfil {
+/***********************************************************************************************/
+/*ÁREA DE DESCRIÇÃO DO PERFIL*/
+.descricaoPerfil h2 {
+    margin: 5px 0px 5px;
+}
+
+.descricaoPerfil,
+.trabalho {
     width: 55%;
+    margin: auto;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.trabalho {
+    margin-top: 10px;
+}
+
+.addTrabalho,
+.addFormation {
     margin: auto;
 }
 
-.descricaoPerfil h2 {
-    margin: 10px 0px 5px;
+/***********************************************************************************************/
+/*ÁREA DE AMIGOS DO PERFIL*/
+#listaAmigos {
+    width: 45%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.descricaoPerfil {
+.message,
+.amigo {
+    display: inline-flex;
+    justify-content: space-between;
     background-color: #D9D9D9;
     border-radius: 30px;
-    /*width: fit-content;*/
+    width: 50%;
     padding: 15px;
-    margin: 0px auto 100px;
+    margin: 0px auto 15px;
+}
+
+.btnActionAmigo {
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    width: fit-content;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: #A52422;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+/***********************************************************************************************/
+/*ÁREA DE GESTÃO DE PROFISSIONAIS-ADMIN*/
+.user {
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    width: 50%;
+    padding: 15px;
+    margin: 0px auto 15px;
+}
+
+.btnAdmin {
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    width: fit-content;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: #A52422;
+    padding: 0px 10px;
+    cursor: pointer;
 }
