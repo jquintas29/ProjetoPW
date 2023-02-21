@@ -1,5 +1,8 @@
 const baseUrl = "http://127.0.0.01:8888";
 
+/**
+ * Mostra todos os profissionais
+ */
 function getAllUsers() {
     const UsersList = document.getElementById('UsersCompaniesList')
     const url = baseUrl + "/procurarUsers"
@@ -33,6 +36,9 @@ function getAllUsers() {
         })
 }
 
+/**
+ * Mostra todas as empresas
+ */
 function getAllCompanies() {
     const UsersList = document.getElementById('UsersCompaniesList')
     const url = baseUrl + "/procurarEmpresas"
@@ -63,6 +69,10 @@ function getAllCompanies() {
         })
 }
 
+/**
+ * Permite fazer um pedido de amizade
+ * @param {*} userID 
+ */
 function addFriend(userID) {
     const url = baseUrl + "/addFriend"
 

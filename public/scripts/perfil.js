@@ -1,6 +1,9 @@
 
 const baseUrl = "http://127.0.0.01:8888";
 
+/**
+ * Mostra todos os profissionais ao usar o metodo POST
+ */
 function showUsersToAdmin() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição')
@@ -35,6 +38,9 @@ function showUsersToAdmin() {
         })
 }
 
+/**
+ * Mostra todas a empresas ao usar o metodo POST
+ */
 function showCompaniesToAdmin() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição')
@@ -72,6 +78,9 @@ function showCompaniesToAdmin() {
         })
 }
 
+/**
+ * Mostra todas a empresas com pedido de registo pendente ao usar o metodo POST
+ */
 function showCompaniesToAdminWReq() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição')
@@ -110,6 +119,11 @@ function showCompaniesToAdminWReq() {
         })
 }
 
+/**
+ * Permite adicionar empresas ao usar o method PUT
+ * @param {*} email 
+ * @param {*} botao 
+ */
 function AceitarEmpresa(email, botao) {
     const listaAmigos = document.getElementById('listaAmigos');
     const profissional = botao.parentNode;
@@ -138,6 +152,11 @@ function AceitarEmpresa(email, botao) {
         })
 }
 
+/**
+ * Permite remover empresas ao usar o method DELETE
+ * @param {*} email 
+ * @param {*} botao 
+ */
 function removerEmpresa(email, botao) {
     const listaAmigos = document.getElementById('listaAmigos');
     const profissional = botao.parentNode;
@@ -166,6 +185,11 @@ function removerEmpresa(email, botao) {
         })
 }
 
+/**
+ * Permite remover profissionais ao usar o method DELETE
+ * @param {*} email 
+ * @param {*} botao 
+ */
 function removerProfissional(email, botao) {
     const listaAmigos = document.getElementById('listaAmigos');
     const profissional = botao.parentNode;
@@ -194,6 +218,9 @@ function removerProfissional(email, botao) {
         })
 }
 
+/**
+ * Recupera a informação guardada em sessão no servidor de forma a verificar o tipo de utilizador e mostrar assim o formulario correspondente
+ */
 function formDescrição() {
     const descricao = document.getElementById('descrição');
     const url = baseUrl + "/api/session";
@@ -215,6 +242,9 @@ function reloadPerfilPage() {
     location.reload();
 }
 
+/**
+ * Mostra os amigos do usuário
+ */
 function getUserFriends() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição');
@@ -249,6 +279,9 @@ function getUserFriends() {
         })
 }
 
+/**
+ * Mostra os pedidos de amizade do usuário
+ */
 function getFriendsRequests() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição');
@@ -284,6 +317,10 @@ function getFriendsRequests() {
         })
 }
 
+/**
+ * Gera uma mensagem no perfil do utilizador
+ * @param {} msg 
+ */
 function showMessage(msg) {
     const descricao = document.getElementById('descrição');
     descricao.style.display = "none";
@@ -295,6 +332,11 @@ function showMessage(msg) {
     listaAmigos.prepend(message);
 }
 
+/**
+ * Permite a aceitação do pedido de amizade 
+ * @param {*} friendId 
+ * @param {*} email 
+ */
 function aceitarAmigo(friendId, email) {
     const listaAmigos = document.getElementById('listaAmigos');
     const amigo = document.getElementById(friendId);
@@ -323,6 +365,10 @@ function aceitarAmigo(friendId, email) {
         })
 }
 
+/**
+ * Retira um amigo da lista
+ * @param {*} friendId 
+ */
 function removerAmigo(friendId) {
     const listaAmigos = document.getElementById('listaAmigos');
     const amigo = document.getElementById(friendId);
@@ -351,6 +397,9 @@ function removerAmigo(friendId) {
         })
 }
 
+/**
+ * valida o formulario do usuaário e envia para o servidor
+ */
 function validarFormUser() {
     const name = document.getElementById('perfilNome').value
     const birth = document.getElementById('dataNascimento').value
@@ -382,6 +431,9 @@ function validarFormUser() {
         })
 }
 
+/**
+ * valida o formulario da empresa e envia para o servidor
+ */
 function validarFormEmpresa() {
     const name = document.getElementById('perfilNome').value
     const descricao = document.getElementById('descricaoPerfil').value
@@ -409,6 +461,9 @@ function validarFormEmpresa() {
         })
 }
 
+/**
+ * Mostra a informação sobre a experienca no mundo do trabalho no perfil do usuário
+ */
 function getWorkExperience() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição');
@@ -481,6 +536,10 @@ function getWorkExperience() {
         })
 }
 
+/**
+ * Remove uma experiencia de trabalho
+ * @param {*} workId 
+ */
 function removerWork(workId) {
     const listaAmigos = document.getElementById('listaAmigos');
     const work = document.getElementById(workId);
@@ -509,6 +568,9 @@ function removerWork(workId) {
         })
 }
 
+/**
+ * Adiciona uma experiencia de trabalho
+ */
 function addWorkExperience() {
     const formDescrição = document.getElementById("formDescrição");
     const listaAmigos = document.getElementById('listaAmigos');
@@ -536,6 +598,15 @@ function addWorkExperience() {
                             </form>`
 }
 
+/**
+ * Mostra o formulário de edição da experiencia de trabalho no perfil do usuário
+ * @param {*} id 
+ * @param {*} name 
+ * @param {*} url 
+ * @param {*} inicio 
+ * @param {*} fim 
+ * @param {*} descricao 
+ */
 function editWorkExperience(id, name, url, inicio, fim, descricao) {
     const formDescrição = document.getElementById("formDescrição");
     const listaAmigos = document.getElementById('listaAmigos');
@@ -563,6 +634,11 @@ function editWorkExperience(id, name, url, inicio, fim, descricao) {
                             </form>`
 }
 
+/**
+ * valida o formulario da experiencia de trabalho e envia para o servidor
+ * @param {*} route 
+ * @param {*} id 
+ */
 function validarFormWork(route, id) {
     const localname = document.getElementById('localname').value
     const logourl = document.getElementById('logourl').value
@@ -575,7 +651,7 @@ function validarFormWork(route, id) {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        method: "POST",
+        method: "PUT",
         body: `id=${id}&localname=${localname}&logourl=${logourl}&startdate=${startdate}&enddate=${enddate}&jobdescription=${jobdescription}`
     })
         .then(async function (response) {
@@ -591,6 +667,9 @@ function validarFormWork(route, id) {
         })
 }
 
+/**
+ * Mostra o a informação sobre a formação academica no perfil do usuário
+ */
 function getAcademicFormation() {
     const listaAmigos = document.getElementById('listaAmigos');
     const descricao = document.getElementById('descrição');
@@ -643,6 +722,10 @@ function getAcademicFormation() {
         })
 }
 
+/**
+ * Remove a formação academica
+ * @param {*} formationID 
+ */
 function removerFormation(formationID) {
     const listaAmigos = document.getElementById('listaAmigos');
     const formation = document.getElementById(formationID);
@@ -671,6 +754,14 @@ function removerFormation(formationID) {
         })
 }
 
+/**
+ * Permite editar a formação academica
+ * @param {*} formationID 
+ * @param {*} estabelecimento 
+ * @param {*} curso 
+ * @param {*} tipo_curso 
+ * @param {*} media 
+ */
 function editFormation(formationID, estabelecimento, curso, tipo_curso, media) {
     const formDescrição = document.getElementById("formDescrição");
     const listaAmigos = document.getElementById('listaAmigos');
@@ -702,6 +793,9 @@ function editFormation(formationID, estabelecimento, curso, tipo_curso, media) {
                             </form>`
 }
 
+/**
+ * Adiciona a formação academica
+ */
 function addAcademicFormation() {
     const formDescrição = document.getElementById("formDescrição");
     const listaAmigos = document.getElementById('listaAmigos');
@@ -732,6 +826,11 @@ function addAcademicFormation() {
                             </form>`
 }
 
+/**
+ * valida o formulario da formação academica e envia para o servidor
+ * @param {*} route 
+ * @param {*} id 
+ */
 function validarFormFormation(route, id) {
     const establishmentName = document.getElementById('establishment').value
     const coursename = document.getElementById('coursename').value
@@ -743,7 +842,7 @@ function validarFormFormation(route, id) {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
-        method: "POST",
+        method: "PUT",
         body: `id=${id}&establishmentName=${establishmentName}&coursename=${coursename}&coursetype=${coursetype}&courseaverage=${courseaverage}`
     })
         .then(async function (response) {
@@ -759,7 +858,9 @@ function validarFormFormation(route, id) {
         })
 }
 
-//Função para mostrar o formulário do utilizador
+/**
+ * Mostra o formulário do utilizador
+ */
 function perfilUser() {
     const formDescrição = document.getElementById("formDescrição");
 
@@ -795,7 +896,9 @@ function perfilUser() {
     </div>`
 }
 
-//Função para mostrar o formulário da empresa
+/**
+ * Mostra o formulario da empresa
+ */
 function perfilCompany() {
     const formDescrição = document.getElementById("formDescrição");
 

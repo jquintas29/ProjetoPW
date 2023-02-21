@@ -32,12 +32,12 @@ module.exports = app => {
 
     router.post('/userWorkExperience', userModel.userWorkExperience)
     router.post('/addWork', userModel.addWork)
-    router.post('/editWork', userModel.editWork)
+    router.put('/editWork', userModel.editWork)
     router.delete('/removerTrabalho', userModel.removerTrabalho)
 
     router.post('/userAcademicFormation', userModel.userAcademicFormation)
     router.post('/addFormation', userModel.addFormation)
-    router.post('/editFormation', userModel.editFormation)
+    router.put('/editFormation', userModel.editFormation)
     router.delete('/removerFormacao', userModel.removerFormacao)
 
     router.get('/sobrenos', (req, res) => res.render('views/Sobre_nos.ejs'));

@@ -10,7 +10,7 @@ exports.registar = async function (user) {
                 dbConnection.query("INSERT INTO users SET ?", user,
                     function (err, result) {
                         if (err) {
-                            console.log("Deu erro no registo na tabela user");
+                            console.log("Deu erro no registo na tabela user"); //para debug
                             reject({ msg: "Já existe um utilizador com este email" });
                         } else {
                             resolve(result);
@@ -22,7 +22,7 @@ exports.registar = async function (user) {
                 dbConnection.query("INSERT INTO empresas SET ?", user,
                     function (err, result) {
                         if (err) {
-                            console.log("Deu erro no registo na tabela empresa" + err);
+                            console.log("Deu erro no registo na tabela empresa" + err); //para debug
                             reject({ msg: "Ja existe uma empresa com este email" });
                         } else {
                             resolve(result);
@@ -34,10 +34,9 @@ exports.registar = async function (user) {
                 dbConnection.query("INSERT INTO admins SET ?", user,
                     function (err, result) {
                         if (err) {
-                            console.log("erro no registo na tabela admin" + err);
+                            console.log("erro no registo na tabela admin" + err); //para debug
                             reject({ msg: "Ja existe um administrador com este email" });
                         } else {
-                            console.log("correu bem no registo admin");
                             resolve(result);
                         }
                     }
@@ -51,6 +50,7 @@ exports.registar = async function (user) {
 }
 
 exports.alterUserInfo = function (user) {
+    console.log("email BD: ", user.emailSearch)
     console.log("visto por empresas BD: ", user.newVisto_por_empresas)
     return new Promise(function (resolve, reject) {
         dbConnection.query(`call alterUserInfo(?, ?, ?, ?, ?, ?, ?)`, [
@@ -60,12 +60,13 @@ exports.alterUserInfo = function (user) {
             user.newGenero,
             user.newDescricao,
             user.newLocalidade,
-            user.newVistoPorEmpresa
+            user.newVisto_por_empresas
         ], function (err, result) {
             if (err) {
                 console.log("correu mal a alterar no user: " + err)
-                reject({ msg: "Erro na alteração das informações do utilizador: " + err})
+                reject({ msg: "Erro na alteração das informações do utilizador: " + err })
             } else {
+                console.log(result)
                 resolve(result)
             }
         })
@@ -83,7 +84,7 @@ exports.alterCompanyInfo = function (company) {
         ], function (err, result) {
             if (err) {
                 console.log("correu mal a alterar na empresa: " + err)
-                reject({ msg: "Erro na alteração das informações da empresa: " + err})
+                reject({ msg: "Erro na alteração das informações da empresa: " + err })
             } else {
                 resolve(result)
             }
@@ -116,7 +117,7 @@ exports.aceitarPedido = async function (friendToAdd, currentUser) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a aceitar pedido: " + err)
-                    reject({ msg: "Erro a aceitar pedido" })
+                    reject({ msg: "Erro a aceitar pedido: " + err })
                 } else {
                     dbConnection.query(`Insert into amigos (email_amigo, nome, aceitacao, nome_user, users_email)
                     value ("${user.email}", "${user.name}", 1, "${currentUser.name}", "${currentUser.email}");`,
@@ -141,7 +142,7 @@ exports.removerProfissional = function (email) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a remover profissional: " + err)
-                    reject({ msg: "Erro a remover profissional" })
+                    reject({ msg: "Erro a remover profissional: " + err })
                 } else {
                     resolve(result)
                 }
@@ -155,7 +156,7 @@ exports.aceitarEmpresa = function (email) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a aceitar empresa: " + err)
-                    reject({ msg: "Erro a aceitar empresa: " + err})
+                    reject({ msg: "Erro a aceitar empresa: " + err })
                 } else {
                     resolve(result)
                 }
@@ -169,7 +170,7 @@ exports.removerEmpresa = function (email) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a remover empresa: " + err)
-                    reject({ msg: "Erro a remover empresa: " + err})
+                    reject({ msg: "Erro a remover empresa: " + err })
                 } else {
                     resolve(result)
                 }
@@ -318,7 +319,7 @@ exports.addWork = function (work, email) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a adicionar trabalho: " + err)
-                    reject({ msg: "Erro na adição do trabalho." })
+                    reject({ msg: "Erro na adição do trabalho: " + err })
                 } else {
                     resolve(result)
                 }
@@ -334,7 +335,7 @@ exports.editWork = function (workEdit) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a alterar trabalho: " + err)
-                    reject({ msg: "Erro na alteração do trabalho." })
+                    reject({ msg: "Erro na alteração do trabalho: " + err })
                 } else {
                     resolve(result)
                 }
@@ -348,7 +349,7 @@ exports.removerTrabalho = function (id) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a remover trabalho: " + err)
-                    reject({ msg: "Erro a remover trabalho" })
+                    reject({ msg: "Erro a remover trabalho: " + err })
                 } else {
                     resolve(result)
                 }
@@ -379,7 +380,7 @@ exports.addFormation = function (formation, email) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a adicionar formação: " + err)
-                    reject({ msg: "Erro na adição da formação." })
+                    reject({ msg: "Erro na adição da formação: " + err })
                 } else {
                     resolve(result)
                 }
@@ -412,7 +413,7 @@ exports.removerFormacao = function (id) {
             function (err, result) {
                 if (err) {
                     console.log("correu mal a remover formação: " + err)
-                    reject({ msg: "Erro a remover formação" })
+                    reject({ msg: "Erro a remover formação: " + err })
                 } else {
                     resolve(result)
                 }
@@ -501,16 +502,3 @@ exports.getVagas = function () {
             });
     })
 }
-
-/*
-function callback(err, result) {
-    if (err) {
-        reject("Erro na procura do utilizador: " + err);
-    } else if (result[0] == null) {
-        err = { message: "Nenhum utilizador com este email!" };
-        reject(err.message);
-    } else {
-        console.log("DB getUser- correu tudo bem");
-        resolve(result[0]);
-    }
-}*/
